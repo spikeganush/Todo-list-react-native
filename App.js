@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Keyboard,
   ScrollView,
+  Platform,
 } from 'react-native'
 import Task from './components/Task'
 
