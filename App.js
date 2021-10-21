@@ -13,6 +13,8 @@ import {
 import Task from './components/Task'
 import Item from './components/Item'
 
+import Constants from 'expo-constants'
+
 export default function App() {
   const [task, setTask] = useState()
   const [taskItems, setTaskItems] = useState([])
