@@ -15,6 +15,7 @@ import Task from './components/Task'
 import Item from './components/Item'
 
 import Constants from 'expo-constants'
+import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function App() {
   const [task, setTask] = useState()
