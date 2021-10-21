@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
   KeyboardAvoidingView,
   StyleSheet,
@@ -9,6 +9,7 @@ import {
   Keyboard,
   ScrollView,
   Platform,
+  FlatList,
 } from 'react-native'
 import Task from './components/Task'
 import Item from './components/Item'
