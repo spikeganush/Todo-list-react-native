@@ -146,13 +146,17 @@ export default function App() {
       >
         <TextInput
           style={styles.input}
-          placeholder={'Write a task'}
-          value={task}
-          onChangeText={(text) => setTask(text)}
+          placeholder={'Min 3 characters'}
+          value={input}
+          onChangeText={onTextChange}
         />
-        <TouchableOpacity onPress={() => handleAddTask()}>
+        <TouchableOpacity
+          style={validInput ? styles.button : styles.buttonDisabled}
+          disabled={validInput ? false : true}
+          onPress={addData}
+        >
           <View style={styles.addWrapper}>
-            <Text style={styles.addText}>+</Text>
+            <Text style={styles.btnText}>+</Text>
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
@@ -163,18 +167,47 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#E8EAED',
+    marginTop: Constants.statusBarHeight,
+    backgroundColor: '#8ed1fa',
+    alignItems: 'center',
+    justifyContent: 'center',
   },
-  tasksWrapper: {
-    paddingTop: 80,
-    paddingHorizontal: 20,
-  },
-  sectionTitle: {
+  title: {
     fontSize: 24,
     fontWeight: 'bold',
+    marginBottom: 15,
   },
-  items: {
-    marginTop: 30,
+  header: {
+    display: 'flex',
+    flexDirection: 'row',
+    marginHorizontal: 10,
+    marginBottom: 10,
+  },
+  input: {
+    backgroundColor: '#FFFFFF',
+    fontSize: 20,
+    borderColor: '#5D67C7',
+    borderWidth: 2,
+    padding: 5,
+    flex: 1,
+    borderTopLeftRadius: 10,
+    borderBottomLeftRadius: 10,
+  },
+  button: {
+    backgroundColor: '#5D67C7',
+    borderColor: '#5D67C7',
+    borderWidth: 2,
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  buttonDisabled: {
+    backgroundColor: '#9e9d9d',
+    borderTopRightRadius: 10,
+    borderBottomRightRadius: 10,
+  },
+  btnText: {
+    color: 'white',
+    padding: 10,
   },
   writeTaskWrapper: {
     position: 'absolute',
@@ -219,5 +252,4 @@ const styles = StyleSheet.create({
     shadowRadius: 1.41,
     elevation: 2,
   },
-  addText: {},
 })
