@@ -131,6 +131,7 @@ export default function App() {
           </View> */}
       {/*</View> */}
       <FlatList
+        style={styles.flatList}
         data={data}
         renderItem={Renderer}
         keyExtractor={(item) => item.id}
@@ -181,6 +182,11 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginBottom: 10,
   },
+  flatList: {
+    height: 500,
+    flexGrow: 0,
+    marginBottom: 90,
+  },
   input: {
     backgroundColor: '#FFFFFF',
     fontSize: 20,
@@ -209,7 +215,7 @@ const styles = StyleSheet.create({
   },
   writeTaskWrapper: {
     position: 'absolute',
-    bottom: 60,
+    bottom: 20,
     width: '100%',
     flexDirection: 'row',
     justifyContent: 'space-around',
