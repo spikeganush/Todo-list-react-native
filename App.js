@@ -148,6 +148,7 @@ export default function App() {
           placeholder={'Min 3 characters'}
           value={input}
           onChangeText={onTextChange}
+          placeholderTextColor="#A0A5D0"
         />
         <TouchableOpacity
           style={validInput ? styles.button : styles.buttonDisabled}
@@ -251,8 +252,8 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
     backgroundColor: '#FFF',
     borderRadius: 15,
-    borderColor: '#C0C0C0',
-    borderWidth: 1,
+    borderColor: '#5D67C7',
+    borderWidth: 1.5,
     width: 290,
     shadowColor: '#000',
     shadowOffset: {

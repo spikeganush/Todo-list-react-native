@@ -40,10 +40,12 @@ const styles = StyleSheet.create({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   text: {
     flex: 1,
     color: 'black',
+    fontSize: 16,
   },
   textDone: {
     flex: 1,
