@@ -6,15 +6,12 @@ import {
   View,
   TextInput,
   TouchableOpacity,
-  Keyboard,
   Platform,
   FlatList,
   StatusBar,
 } from 'react-native'
-import Task from './components/Task'
 import Item from './components/Item'
 
-import Constants from 'expo-constants'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function App() {
@@ -33,6 +30,7 @@ export default function App() {
     const item = { id: id, name: input }
     setData([...data, item])
     setInput(null)
+    setValidInput(false)
   }
 
   const deleteData = (id) => {
@@ -56,7 +54,7 @@ export default function App() {
 
   const getData = async () => {
     try {
-      const stringified = await AsyncStorage.getItem('listData')
+      let stringified = await AsyncStorage.getItem('listData')
       setData(stringified !== null ? JSON.parse(stringified) : [])
     } catch (e) {
       consol.log(e)
@@ -83,6 +81,11 @@ export default function App() {
     } else {
       storeData()
     }
+
+    // Descending sorting
+
+    data.sort((a, b) => a.id < b.id)
+    setData(data)
   }, [data])
 
   const Renderer = ({ item }) => (
@@ -99,12 +102,14 @@ export default function App() {
     <View style={styles.container}>
       <StatusBar backgroundColor="#464D94" />
       <Text style={styles.title}>Todo List</Text>
-      <FlatList
-        style={styles.flatList}
-        data={data}
-        renderItem={Renderer}
-        keyExtractor={(item) => item.id}
-      />
+      <View style={styles.flatListView}>
+        <FlatList
+          style={styles.flatList}
+          data={data}
+          renderItem={Renderer}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
 
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -133,7 +138,7 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
+    height: '100%',
     backgroundColor: '#464D94',
     alignItems: 'center',
     justifyContent: 'center',
@@ -150,10 +155,9 @@ const styles = StyleSheet.create({
     marginHorizontal: 10,
     marginBottom: 10,
   },
-  flatList: {
-    height: 500,
-    flexGrow: 0,
-    marginBottom: 90,
+  flatListView: {
+    height: '80%',
+    marginBottom: 95,
   },
   input: {
     backgroundColor: '#FFFFFF',
