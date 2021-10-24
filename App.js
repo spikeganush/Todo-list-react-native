@@ -7,9 +7,9 @@ import {
   TextInput,
   TouchableOpacity,
   Keyboard,
-  ScrollView,
   Platform,
   FlatList,
+  StatusBar,
 } from 'react-native'
 import Task from './components/Task'
 import Item from './components/Item'
@@ -18,21 +18,6 @@ import Constants from 'expo-constants'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 
 export default function App() {
-  const [task, setTask] = useState()
-  const [taskItems, setTaskItems] = useState([])
-
-  const handleAddTask = () => {
-    Keyboard.dismiss()
-    setTaskItems([...taskItems, task])
-    setTask(null)
-  }
-
-  const deleteTask = (index) => {
-    let itemsCopy = [...taskItems]
-    itemsCopy.splice(index, 1)
-    setTaskItems(itemsCopy)
-  }
-
   const [data, setData] = useState('')
   const [validInput, setValidInput] = useState(false)
   const [input, setInput] = useState()
@@ -89,9 +74,7 @@ export default function App() {
         }
       }
     })
-    console.log(items)
-
-    addData(items)
+    setData(items)
   }
 
   useEffect(() => {
@@ -114,22 +97,8 @@ export default function App() {
 
   return (
     <View style={styles.container}>
+      <StatusBar backgroundColor="#464D94" />
       <Text style={styles.title}>Todo List</Text>
-      {/* Added this scroll view to enable scrolling when list gets longer than the page */}
-      {/* Today's Tasks */}
-      {/* <View style={styles.tasksWrapper}>
-        
-          <View style={styles.items}>
-            {/* This is where the tasks will go! */}
-      {/* {taskItems.map((item, index) => {
-              return (
-                <TouchableOpacity key={index} onPress={() => deleteTask(index)}>
-                  <Task text={item} deleteTask={deleteTask} />
-                </TouchableOpacity>
-              )
-            })}
-          </View> */}
-      {/*</View> */}
       <FlatList
         style={styles.flatList}
         data={data}
@@ -137,8 +106,6 @@ export default function App() {
         keyExtractor={(item) => item.id}
       />
 
-      {/* Write a task */}
-      {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
       <KeyboardAvoidingView
         behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
         style={styles.writeTaskWrapper}
@@ -167,8 +134,7 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: Constants.statusBarHeight,
-    backgroundColor: '#8ed1fa',
+    backgroundColor: '#464D94',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -176,6 +142,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 15,
+    color: 'white',
   },
   header: {
     display: 'flex',
