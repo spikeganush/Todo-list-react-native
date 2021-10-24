@@ -79,13 +79,10 @@ export default function App() {
     if (!data) {
       getData()
     } else {
+      // Descending sorting
+      data.sort((a, b) => a.id < b.id)
       storeData()
     }
-
-    // Descending sorting
-
-    data.sort((a, b) => a.id < b.id)
-    setData(data)
   }, [data])
 
   const Renderer = ({ item }) => (
