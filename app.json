@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "TodoList-react_native",
+    "name": "Todo List",
     "slug": "TodoList-react_native",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -8,26 +8,29 @@
     "splash": {
       "image": "./assets/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#464D94"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
+      "bundleIdentifier": "com.ganushcorporation.todolist",
+      "buildNumber": "1.0.0",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.ganushcorporation.todolist",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#464D94"
       }
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "An easy and fast todo list",
+    "githubUrl": "https://github.com/spikeganush/Todo-list-react-native"
   }
 }
