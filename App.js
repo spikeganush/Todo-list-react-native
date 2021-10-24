@@ -163,8 +163,7 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     padding: 5,
     flex: 1,
-    borderTopLeftRadius: 10,
-    borderBottomLeftRadius: 10,
+    borderRadius: 10,
   },
   button: {
     width: 60,
@@ -205,7 +204,8 @@ const styles = StyleSheet.create({
   },
   btnText: {
     color: '#FFF',
-    fontSize: 30,
+    fontSize: 40,
+    fontWeight: 'bold',
   },
   writeTaskWrapper: {
     position: 'absolute',
